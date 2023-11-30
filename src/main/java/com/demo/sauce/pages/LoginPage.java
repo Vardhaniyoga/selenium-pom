@@ -9,26 +9,41 @@ public class LoginPage {
 
     WebDriver driver;
 
-    //Objects
-    @FindBy(xpath = "//input[@id='user-name']")
-    WebElement username;
-    @FindBy(xpath="//input[@id='password']")
-    WebElement password;
-
-    @FindBy(xpath="//input[@id='login-button']")
-    WebElement loginButton;
-
     //Parametrized Constructor
     public LoginPage(WebDriver driver) {
         this.driver = driver;
         PageFactory.initElements(driver,this );
     }
+    //Objects
+    @FindBy(xpath = "//input[@id='user-name']")
+    private WebElement username;
+//getter method
+    public WebElement getUsername(){
+        return username;
+    }
+
+    @FindBy(xpath="//input[@id='password']")
+    private WebElement password;
+    public WebElement getPassword(){
+        return password;
+    }
+
+    @FindBy(xpath="//input[@id='login-button']")
+    private WebElement loginButton;
+
+    public WebElement getLoginButton(){
+        return loginButton;
+    }
+
+
+
 
     //Actions
-    public void login(){
-        username.sendKeys("standard_user");
-        password.sendKeys("secret_sauce");
-        loginButton.click();
+    public void login(String userName, String passWord){
+        getUsername().sendKeys(userName);
+        getPassword().sendKeys(passWord);
+        getLoginButton().click();
+
     }
 
 
